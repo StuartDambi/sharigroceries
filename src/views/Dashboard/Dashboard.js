@@ -14,18 +14,13 @@ import {
   StatHelpText,
   StatLabel,
   StatNumber,
-  Table,
-  Tbody,
   Text,
-  Th,
-  Thead,
-  Tr,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
 // assets
 import peopleImage from "assets/img/people-image.png";
-import logoChakra from "assets/svg/logo-white.svg";
+import logoChakra from "assets/img/dashbg.jpg";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -42,33 +37,17 @@ import {
   StatsIcon,
   WalletIcon,
 } from "components/Icons/Icons.js";
-import DashboardTableRow from "components/Tables/DashboardTableRow";
-import TimelineRow from "components/Tables/TimelineRow";
 import React, { useState } from "react";
 // react icons
 import { BsArrowRight } from "react-icons/bs";
-import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
-import { dashboardTableData, timelineData } from "variables/general";
 
 export default function Dashboard() {
   const value = "$100.000";
   // Chakra Color Mode
-  const { colorMode, toggleColorMode } = useColorMode();
   const iconTeal = useColorModeValue("teal.300", "teal.300");
   const iconBoxInside = useColorModeValue("white", "white");
   const textColor = useColorModeValue("gray.700", "white");
-  const [series, setSeries] = useState([
-    {
-      type: "area",
-      name: "Mobile apps",
-      data: [190, 220, 205, 350, 370, 450, 400, 360, 210, 250, 292, 150],
-    },
-    {
-      type: "area",
-      name: "Websites",
-      data: [400, 291, 121, 117, 25, 133, 121, 211, 147, 25, 201, 203],
-    },
-  ]);
+
   const overlayRef = React.useRef();
 
   return (
@@ -88,7 +67,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor}>
-                    $53,000
+                    UGX53,000
                   </StatNumber>
                   <StatHelpText
                     alignSelf="flex-end"
@@ -123,7 +102,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor}>
-                    2,300
+                    20
                   </StatNumber>
                   <StatHelpText
                     alignSelf="flex-end"
@@ -158,7 +137,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor}>
-                    +3,020
+                    +3
                   </StatNumber>
                   <StatHelpText
                     alignSelf="flex-end"
@@ -194,7 +173,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
-                    $173,000
+                    UGX173,000
                   </StatNumber>
                   <StatHelpText
                     alignSelf="flex-end"
@@ -232,7 +211,7 @@ export default function Dashboard() {
                 width={{ lg: "45%" }}
               >
                 <Text fontSize="sm" color="gray.400" fontWeight="bold">
-                  Built by developers
+                  Manage Social Media
                 </Text>
                 <Text
                   fontSize="lg"
@@ -240,11 +219,11 @@ export default function Dashboard() {
                   fontWeight="bold"
                   pb=".5rem"
                 >
-                  Purity UI Dashboard
+                  Shari's Grocery
                 </Text>
                 <Text fontSize="sm" color="gray.400" fontWeight="normal">
-                  From colors, cards, typography to complex elements, you will
-                  find the full documentation.
+                  Head to facebook and manage your business profile. You can
+                  also import your stories here!
                 </Text>
                 <Spacer />
                 <Flex align="center">
@@ -263,7 +242,7 @@ export default function Dashboard() {
                       my={{ sm: "1.5rem", lg: "0px" }}
                       _hover={{ me: "4px" }}
                     >
-                      Read more
+                      Facebook
                     </Text>
                     <Icon
                       as={BsArrowRight}
@@ -325,11 +304,11 @@ export default function Dashboard() {
                 lineHeight="1.6"
               >
                 <Text fontSize="xl" fontWeight="bold" pb=".3rem">
-                  Work with the rockets
+                  Manage Instagram Account
                 </Text>
                 <Text fontSize="sm" fontWeight="normal" w={{ lg: "92%" }}>
-                  Wealth creation is a revolutionary recent positive-sum game.
-                  It is all about who takes the opportunity first.
+                  With a rich creation of content, you will be able to attract a
+                  very huge market for Shari's grocery.
                 </Text>
                 <Spacer />
                 <Flex
@@ -343,7 +322,7 @@ export default function Dashboard() {
                       _hover={{ me: "4px" }}
                       transition="all .5s ease"
                     >
-                      Read more
+                      Instagram
                     </Text>
                     <Icon
                       as={BsArrowRight}
@@ -542,7 +521,9 @@ export default function Dashboard() {
           </Box>
         </Card>
       </Grid>
-      <Grid
+
+      {/* Gird */}
+      {/* <Grid
         templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
         templateRows={{ sm: "1fr auto", md: "1fr", lg: "1fr" }}
         gap="24px"
@@ -637,7 +618,7 @@ export default function Dashboard() {
             </Flex>
           </CardBody>
         </Card>
-      </Grid>
+      </Grid> */}
     </Flex>
   );
 }

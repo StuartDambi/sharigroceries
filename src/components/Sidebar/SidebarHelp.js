@@ -26,12 +26,9 @@ export function SidebarHelp(props) {
         Need help?
       </Text>
       <Text fontSize="xs" color="white" mb="10px">
-        Please check our docs
+        Please contact developer
       </Text>
-      <Link
-        w="100%"
-        href="https://demos.creative-tim.com/docs-purity-ui-dashboard/"
-      >
+      <Link w="100%" href="https://github.com/codedbystuart">
         <Button
           fontSize="10px"
           fontWeight="bold"
@@ -48,7 +45,7 @@ export function SidebarHelp(props) {
           }}
           color="black"
         >
-          DOCUMENTATION
+          DEVELOPER
         </Button>
       </Link>
     </Flex>
