@@ -25,7 +25,14 @@ var dashRoutes = [
   },
   {
     path: "/tables",
-    name: "Tables",
+    name: "Products",
+    icon: <StatsIcon color="inherit" />,
+    component: Tables,
+    layout: "/admin",
+  },
+  {
+    path: "/orders",
+    name: "Orders",
     icon: <StatsIcon color="inherit" />,
     component: Tables,
     layout: "/admin",
@@ -38,7 +45,7 @@ var dashRoutes = [
     layout: "/admin",
   },
   {
-    name: "ACCOUNT PAGES",
+    name: "SETTINGS PAGES",
     category: "account",
     state: "pageCollapse",
     views: [
