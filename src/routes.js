@@ -1,10 +1,12 @@
 // import
 import Dashboard from "views/Dashboard/Dashboard.js";
-import Tables from "views/Dashboard/Tables.js";
+import Products from "views/Dashboard/Products";
 import Billing from "views/Dashboard/Billing.js";
 import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
 import SignUp from "views/Pages/SignUp.js";
+import CreateProduct from "views/Dashboard/CreateProduct.jsx";
+import Orders from "views/Dashboard/Orders";
 
 import {
   HomeIcon,
@@ -24,17 +26,31 @@ var dashRoutes = [
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/products",
     name: "Products",
     icon: <StatsIcon color="inherit" />,
-    component: Tables,
+    component: Products,
+    layout: "/admin",
+  },
+  {
+    path: "/createProduct",
+    name: "CreateProduct",
+    icon: <StatsIcon color="inherit" />,
+    component: CreateProduct,
     layout: "/admin",
   },
   {
     path: "/orders",
     name: "Orders",
     icon: <StatsIcon color="inherit" />,
-    component: Tables,
+    component: Orders,
+    layout: "/admin",
+  },
+  {
+    path: "/customers",
+    name: "Customers",
+    icon: <StatsIcon color="inherit" />,
+    component: Products,
     layout: "/admin",
   },
   {
