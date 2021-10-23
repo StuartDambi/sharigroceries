@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 // Chakra imports
 import {
   Flex,
@@ -19,6 +19,7 @@ import ProductsRow from "components/Tables/ProductsRow";
 import avatar1 from "assets/img/avatars/avatar1.png";
 import avatar2 from "assets/img/avatars/avatar2.png";
 import avatar3 from "assets/img/avatars/avatar3.png";
+import { AuthContext } from "context/AuthContext";
 
 export const tablesTableData = [
   {
@@ -50,8 +51,27 @@ export const tablesTableData = [
   },
 ];
 
-function Tables() {
+const Products = () => {
   const textColor = useColorModeValue("gray.700", "white");
+  const [products, setProducts] = useState([]);
+  const { token } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/v1/products", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const products = await response.json();
+        setProducts(products.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, [setProducts, token]);
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
@@ -81,16 +101,17 @@ function Tables() {
               </Tr>
             </Thead>
             <Tbody>
-              {tablesTableData.map((row) => {
+              {products.map((row) => {
                 return (
                   <ProductsRow
+                    key={row.id}
                     name={row.name}
-                    logo={row.logo}
-                    email={row.email}
-                    subdomain={row.subdomain}
-                    domain={row.domain}
-                    status={row.status}
-                    date={row.date}
+                    logo={row.image}
+                    email={row.description}
+                    subdomain={`${row.stock} on stock`}
+                    domain={`UGX ${row.price}`}
+                    status={"In Stock"}
+                    date={row.createdAt}
                   />
                 );
               })}
@@ -100,6 +121,6 @@ function Tables() {
       </Card>
     </Flex>
   );
-}
+};
 
-export default Tables;
+export default Products;

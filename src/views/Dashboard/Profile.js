@@ -537,7 +537,9 @@ function Profile() {
           </CardBody>
         </Card>
       </Grid>
-      <Card p="16px" my="24px">
+
+      {/*  */}
+      {/* <Card p="16px" my="24px">
         <CardHeader p="12px 5px" mb="12px">
           <Flex direction="column">
             <Text fontSize="lg" color={textColor} fontWeight="bold">
@@ -719,7 +721,7 @@ function Profile() {
             </Button>
           </Grid>
         </CardBody>
-      </Card>
+      </Card> */}
     </Flex>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 // Chakra imports
 import {
   Box,
@@ -12,11 +12,60 @@ import {
   Switch,
   Text,
   useColorModeValue,
+  Alert,
 } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 // Assets
 import signInImage from "assets/img/sharibg.jpg";
+import { AuthContext } from "context/AuthContext";
 
-function SignIn() {
+const SignIn = () => {
+  const history = useHistory();
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+  const { token } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const { handleLogin: loginUser } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    setState({ ...state, [event.target.name]: event.target.value });
+  };
+
+  const handleLogin = async () => {
+    try {
+      const { email, password } = state;
+      const response = await fetch(
+        "http://localhost:5000/api/v1/users/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+      const data = await response.json();
+      if (data.status === 403) {
+        setError("Incorrect credentials, Please try again 🥰");
+      } else {
+        console.log(data);
+        loginUser(data.data);
+      }
+    } catch (error) {
+      console.log("Fatal: ", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      history.push("/admin/dashboard");
+    }
+    console.log(token);
+  }, [history, token]);
   // Chakra color mode
   const titleColor = useColorModeValue("teal.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
@@ -57,6 +106,11 @@ function SignIn() {
               Enter your email and password to sign in
             </Text>
             <FormControl>
+              {error && (
+                <Alert status="error" mb="3">
+                  {error}
+                </Alert>
+              )}
               <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
                 Email
               </FormLabel>
@@ -64,7 +118,10 @@ function SignIn() {
                 borderRadius="15px"
                 mb="24px"
                 fontSize="sm"
-                type="text"
+                type="email"
+                name="email"
+                value={state.email}
+                onChange={handleChange}
                 placeholder="Your email adress"
                 size="lg"
               />
@@ -76,6 +133,9 @@ function SignIn() {
                 mb="36px"
                 fontSize="sm"
                 type="password"
+                name="password"
+                value={state.password}
+                onChange={handleChange}
                 placeholder="Your password"
                 size="lg"
               />
@@ -105,6 +165,7 @@ function SignIn() {
                 _active={{
                   bg: "teal.400",
                 }}
+                onClick={handleLogin}
               >
                 SIGN IN
               </Button>
@@ -146,6 +207,6 @@ function SignIn() {
       </Flex>
     </Flex>
   );
-}
+};
 
 export default SignIn;

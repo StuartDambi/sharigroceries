@@ -7,7 +7,7 @@ import {
   Icon,
   Image,
   Portal,
-  Progress,
+  // Progress,
   SimpleGrid,
   Spacer,
   Stat,
@@ -15,7 +15,7 @@ import {
   StatLabel,
   StatNumber,
   Text,
-  useColorMode,
+  // useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
 // assets
@@ -25,7 +25,7 @@ import logoChakra from "assets/img/dashbg.jpg";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
-import BarChart from "components/Charts/BarChart";
+// import BarChart from "components/Charts/BarChart";
 import LineChart from "components/Charts/LineChart";
 import IconBox from "components/Icons/IconBox";
 // Custom icons
@@ -33,16 +33,16 @@ import {
   CartIcon,
   DocumentIcon,
   GlobeIcon,
-  RocketIcon,
-  StatsIcon,
+  // RocketIcon,
+  // StatsIcon,
   WalletIcon,
 } from "components/Icons/Icons.js";
-import React, { useState } from "react";
+import React from "react";
 // react icons
 import { BsArrowRight } from "react-icons/bs";
 
 export default function Dashboard() {
-  const value = "$100.000";
+  // const value = "$100.000";
   // Chakra Color Mode
   const iconTeal = useColorModeValue("teal.300", "teal.300");
   const iconBoxInside = useColorModeValue("white", "white");
@@ -348,7 +348,8 @@ export default function Dashboard() {
         gap="24px"
         mb={{ lg: "26px" }}
       >
-        <Card p="16px">
+        {/*  */}
+        {/* <Card p="16px">
           <CardBody>
             <Flex direction="column" w="100%">
               <BarChart />
@@ -501,7 +502,7 @@ export default function Dashboard() {
               </SimpleGrid>
             </Flex>
           </CardBody>
-        </Card>
+        </Card> */}
         <Card p="28px 10px 16px 0px" mb={{ sm: "26px", lg: "0px" }}>
           <CardHeader mb="20px" pl="22px">
             <Flex direction="column" alignSelf="flex-start">

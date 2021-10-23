@@ -1,20 +1,20 @@
 // import
 import Dashboard from "views/Dashboard/Dashboard.js";
 import Products from "views/Dashboard/Products";
-import Billing from "views/Dashboard/Billing.js";
+// import Billing from "views/Dashboard/Billing.js";
 import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
-import SignUp from "views/Pages/SignUp.js";
+// import SignUp from "views/Pages/SignUp.js";
 import CreateProduct from "views/Dashboard/CreateProduct.jsx";
 import Orders from "views/Dashboard/Orders";
 
 import {
   HomeIcon,
   StatsIcon,
-  CreditIcon,
+  // CreditIcon,
   PersonIcon,
   DocumentIcon,
-  RocketIcon,
+  // RocketIcon,
 } from "components/Icons/Icons";
 
 var dashRoutes = [
@@ -53,13 +53,13 @@ var dashRoutes = [
     component: Products,
     layout: "/admin",
   },
-  {
-    path: "/billing",
-    name: "Billing",
-    icon: <CreditIcon color="inherit" />,
-    component: Billing,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/billing",
+  //   name: "Billing",
+  //   icon: <CreditIcon color="inherit" />,
+  //   component: Billing,
+  //   layout: "/admin",
+  // },
   {
     name: "SETTINGS PAGES",
     category: "account",
@@ -75,19 +75,19 @@ var dashRoutes = [
       },
       {
         path: "/",
-        name: "Sign In",
+        name: "Logout",
         icon: <DocumentIcon color="inherit" />,
         component: SignIn,
         layout: "/auth",
       },
-      {
-        path: "/signup",
-        name: "Sign Up",
-        icon: <RocketIcon color="inherit" />,
-        secondaryNavbar: true,
-        component: SignUp,
-        layout: "/auth",
-      },
+      // {
+      //   path: "/signup",
+      //   name: "Sign Up",
+      //   icon: <RocketIcon color="inherit" />,
+      //   secondaryNavbar: true,
+      //   component: SignUp,
+      //   layout: "/auth",
+      // },
     ],
   },
 ];
