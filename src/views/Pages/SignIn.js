@@ -15,20 +15,19 @@ import {
   Alert,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 // Assets
 import signInImage from "assets/img/sharibg.jpg";
-import { AuthContext } from "context/AuthContext";
+import { loginUser } from "../../store/actions/authActions";
 
 const SignIn = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { token, message } = useSelector((store) => store.auth);
   const [state, setState] = useState({
     email: "",
     password: "",
   });
-  const { token } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
-  const { handleLogin: loginUser } = useContext(AuthContext);
-  const [error, setError] = useState(null);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -36,35 +35,14 @@ const SignIn = () => {
   };
 
   const handleLogin = async () => {
-    try {
-      const { email, password } = state;
-      const response = await fetch(
-        "http://localhost:5000/api/v1/users/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
-      const data = await response.json();
-      if (data.status === 403) {
-        setError("Incorrect credentials, Please try again 🥰");
-      } else {
-        console.log(data);
-        loginUser(data.data);
-      }
-    } catch (error) {
-      console.log("Fatal: ", error);
-    }
+    const { email, password } = state;
+    dispatch(loginUser(email, password));
   };
 
   useEffect(() => {
     if (token) {
       history.push("/admin/dashboard");
     }
-    console.log(token);
   }, [history, token]);
   // Chakra color mode
   const titleColor = useColorModeValue("teal.300", "teal.200");
@@ -106,9 +84,9 @@ const SignIn = () => {
               Enter your email and password to sign in
             </Text>
             <FormControl>
-              {error && (
+              {message && (
                 <Alert status="error" mb="3">
-                  {error}
+                  Wrong email or password 😜
                 </Alert>
               )}
               <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
