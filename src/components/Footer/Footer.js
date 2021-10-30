@@ -30,7 +30,7 @@ export default function Footer() {
         <Link
           // color={linkTeal}
           color="teal.400"
-          href="https://www.creative-tim.com"
+          href="/admin/dashboard"
           target="_blank"
         >
           SHARI'S GROCERY
